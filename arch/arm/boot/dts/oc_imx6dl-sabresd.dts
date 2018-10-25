@@ -1,0 +1,33 @@
+/*
+ * Copyright (C) 2013-2015 Freescale Semiconductor, Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+
+/dts-v1/;
+
+#include "imx6dl.dtsi"
+#include "oc_imx6qdl-sabresd.dtsi"
+
+/ {
+	model = "Freescale i.MX6 DualLite SABRE Smart Device Board";
+	compatible = "fsl,imx6dl-sabresd", "fsl,imx6dl";
+};
+
+&cpu0 {
+	arm-supply = <&sw1a_reg>;
+	soc-supply = <&sw1c_reg>;
+};
+
+&gpc {
+	/* use ldo-enable, u-boot will check it and configure */
+	fsl,ldo-bypass = <1>;
+	/* watchdog select of reset source */
+	fsl,wdog-reset = <1>;
+};
+
+&wdog1 {
+	status = "okay";
+};

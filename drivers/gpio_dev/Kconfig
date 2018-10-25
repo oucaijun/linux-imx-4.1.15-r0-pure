@@ -1,0 +1,20 @@
+#
+# GPIO input,output and interrupt drivers
+#
+config GPIO_DB_OUT
+       tristate "meihuan DaBai gpio output driver"
+       default y
+       help
+               meihuan DaBai gpio output driver
+
+config GPIO_DB_IN
+       tristate "meihuan DaBai gpio input driver"
+       default y
+       help
+               meihuan DaBai gpio imput driver
+
+config GPIO_DB_INT
+       tristate "meihuan DaBai gpio interrupt driver"
+       default y
+       help
+               meihuan DaBai gpio interrupt driver
