@@ -22,15 +22,19 @@
 #define GET_RECENT_OFFSET  0xA2
 #define GET_PRE_ADJUST_TIME  0xA3
 #define SETUP_ADJUST_TIME  0xA4
+#define SET_SIG_VALUE  0xA5
 
 #define GPS_CK__SIG 0xAF
 
 struct gps_settime_info
 {
 	unsigned long usr_set_seconds;//设置的秒数
-	int signal;	//当前信号强度
 };
 
+struct gps_sig_info
+{
+	int signal;	//当前信号强度
+};
 
 typedef void (*gi_callback)(void) ;
 typedef int  (*giadc_callback)(bool valid,int32_t signal,uint64_t tick);

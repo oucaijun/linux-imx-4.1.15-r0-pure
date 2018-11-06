@@ -228,12 +228,19 @@ gps_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		struct gps_settime_info __user *  info = (struct gps_settime_info __user *)(arg);
 		gps_adjust_info.usr_set_seconds = info->usr_set_seconds;
 		gps_adjust_info.enable = true;
-		gps_adjust_info.signal = info->signal;
+		//gps_adjust_info.signal = info->signal;
 		printk("signal:%d,timeoffset:%d  preset:%u-useset:%u\n",gps_adjust_info.signal,gps_adjust_info.offset,gps_adjust_info.SetTime.tv_sec,gps_adjust_info.usr_set_seconds );
 		//gps_adjust_info.usr_settime_tick  = (unsigned long)times(NULL);
 		//printk("usr set seconds:%ul\n",gps_adjust_info.usr_set_seconds);
 	}
 		break;
+	case SET_SIG_VALUE:
+	{
+		struct gps_sig_info __user *  info = (struct gps_sig_info  __user *)(arg);
+		gps_adjust_info.signal = info->signal;	
+	}
+	break;
+
 	case  GET_RECENT_OFFSET:
 	{
 		int __user *offset = (int __user *)(arg);
